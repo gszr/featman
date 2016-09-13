@@ -34,6 +34,9 @@ class RequestResource(Resource):
 
     def put(self, rid):
         req = db.session.query(Request).get(rid)
+        # don't allow creating with PUT
+        if not req:
+            abort(404, message="Request {} does not exist".format(rid))
         req.title    = request.json['title']
         req.descr    = request.json['descr']
         req.client   = request.json['client']
