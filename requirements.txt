@@ -1,0 +1,6 @@
+flask
+sqlalchemy
+flask-sqlalchemy
+flask-restful
+marshmallow
+marshmallow-sqlalchemy
