@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+      <link href="{{ url_for('static', filename='css/new.css') }}" rel="stylesheet">
+    <div class="container">
+      <h2 class="form-signin-heading text-xs-center">New feature request</h2>
+      <form class="form-signin">
+        <label for="inputTitle" class="sr-only">Feature title</label>
+        <input type="text" id="inputTitle" class="form-control" placeholder="Feature title" required autofocus>
+        
+        <label for="inputDescription" class="sr-only">Description</label>
+        <input type="text" id="inputPassword" class="form-control" placeholder="Description" required>
+        
+        <label for="inputPriority" class="sr-only">Priotity</label>
+        <input type="text" id="inputPriotity" class="form-control" placeholder="Priotity" required>
+        
+        <label for="inputURL" class="sr-only">Ticket URL</label>
+        <input type="text" id="inputURL" class="form-control" placeholder="Ticket URL" required>
+        
+        <label for="selectArea" class="sr-only">Produt Area</label>
+        <select id="selectArea" class="form-control" required>
+            <option value="" selected disabled>Product area</option>
+            <option value="policies">Policies</option>
+            <option value="billing">Billing</option>
+            <option value="claims">Claims</option>
+            <option value="reports">Reports</option>
+        </select>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit request</button>
+    </div>
+    </form>
+{% endblock %}
