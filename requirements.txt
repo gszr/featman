@@ -1,4 +1,5 @@
 flask
+pysqlite
 sqlalchemy
 flask-sqlalchemy
 flask-restful
