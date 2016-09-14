@@ -1,30 +1,40 @@
 {% extends "base.html" %}
 {% block body %}
-    <div class="container">
-      <h2 class="form-signin-heading text-xs-center">New feature request</h2>
-      <form class="form-signin">
-        <label for="inputTitle" class="sr-only">Feature title</label>
-        <input type="text" id="inputTitle" class="form-control" placeholder="Feature title" required autofocus>
-        
-        <label for="inputDescription" class="sr-only">Description</label>
-        <input type="text" id="inputPassword" class="form-control" placeholder="Description" required>
-        
-        <label for="inputPriority" class="sr-only">Priotity</label>
-        <input type="text" id="inputPriotity" class="form-control" placeholder="Priotity" required>
-        
-        <label for="inputURL" class="sr-only">Ticket URL</label>
-        <input type="text" id="inputURL" class="form-control" placeholder="Ticket URL" required>
-        
-        <label for="selectArea" class="sr-only">Produt Area</label>
-        <select id="selectArea" class="form-control" required>
-            <option value="" selected disabled>Product area</option>
-            <option value="policies">Policies</option>
-            <option value="billing">Billing</option>
-            <option value="claims">Claims</option>
-            <option value="reports">Reports</option>
-        </select>
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Submit request</button>
-    </div>
-    </form>
+<div class="container">
+	<h2 class="form-signin-heading text-xs-center">New feature request</h2>
+	<form data-bind="submit: submitReq" class="form-signin">
+
+		<label for="inputTitle" class="sr-only">Feature title</label>
+		<input data-bind="value: title" type="text" id="inputTitle" 
+			class="form-control" placeholder="Feature title" required autofocus>
+		
+		<label for="inputDescription" class="sr-only">Description</label>
+		<input data-bind="value: descr" type="text" id="inputDescription"
+			class="form-control" placeholder="Description" required>
+
+		<label for="inputClient" class="sr-only">Description</label>
+		<input data-bind="value: client" type="text" id="inputClient"
+			class="form-control" placeholder="Client" required>
+
+		<label for="inputPriority" class="sr-only">Priotity</label>
+		<input data-bind="value: priority" type="text" id="inputPriotity"
+			class="form-control" placeholder="Priotity" required>
+		
+		<label for="inputURL" class="sr-only">Ticket URL</label>
+		<input data-bind="value: url" type="text" id="inputURL" class="form-control" 
+			placeholder="Ticket URL" required>
+		
+		<label for="selectArea" class="sr-only">Produt Area</label>
+		<select data-bind="value: prodarea" id="selectArea" class="form-control" required>
+			<option value="" selected disabled>Product area</option>
+			<option value="policies">Policies</option>
+			<option value="billing">Billing</option>
+			<option value="claims">Claims</option>
+			<option value="reports">Reports</option>
+		</select>
+		
+		<button type="submit" class="btn btn-lg btn-primary btn-block">Submit request</button>
+	<script src="{{ url_for('static', filename='js/new.js') }}"></script>
+	</form>
+</div>
 {% endblock %}
