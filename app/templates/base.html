@@ -9,7 +9,7 @@
     <meta name="description" content="Feature Requests Manager">
     <meta name="author" content="Guilherme Salazar">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>{% block item %}FRM{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
@@ -22,7 +22,7 @@
   <body>
 
     <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-      <a class="navbar-brand" href="/">Feature Requests</a>
+      <a class="navbar-brand" href="/">FRM</a>
       <ul class="nav navbar-nav">
             <li class="nav-item btn-group">
                 <a class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Features</a>
