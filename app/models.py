@@ -8,7 +8,7 @@ class Request(Base):
     __tablename__ = "request"
     id       = Column(Integer, primary_key=True)
     priority = Column(Integer)
-    deadline = Column(Date)
+    deadline = Column(String(10))
     title    = Column(String(255))
     descr    = Column(String(255))
     client   = Column(String(100))
@@ -16,7 +16,7 @@ class Request(Base):
     prodarea = Column(String(100))
 
     def __init__(self, title, descr, client, priority, url, prodarea,
-        deadline=None):
+        deadline):
         self.title    = title
         self.descr    = descr
         self.client   = client

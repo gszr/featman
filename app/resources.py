@@ -19,7 +19,7 @@ class RequestResource(Resource):
     def post(self):
         req = Request(request.json['title'], request.json['descr'], 
             request.json['client'], request.json['priority'], request.json['url'],
-            request.json['prodarea'])
+            request.json['prodarea'], request.json['deadline'])
         db.session.add(req)
         db.session.commit()
         return request_schema.dump(req).data

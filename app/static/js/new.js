@@ -4,6 +4,7 @@ $(document).ready(function() {
 		this.descr    = ko.observable();
 		this.client   = ko.observable();
 		this.priority = ko.observable();
+		this.deadline = ko.observable();
 		this.url      = ko.observable();
 		this.prodarea = ko.observable();
 
@@ -15,11 +16,17 @@ $(document).ready(function() {
 				data : ko.toJSON(this),
 				dataType : "json",
 				success: function(returnedData) {
-				//TODO redir to the request
+				//TODO redir to the request?
 				}
 			})
 		}
 	};
 
 	ko.applyBindings(new ViewModel());
+
+	$('.datepicker').datepicker({
+		maxViewMode: 3,
+		todayBtn: "linked",
+		orientation: "top right"
+	});
 });
