@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="Feature Requests Manager">
+    <meta name="description" content="Features Manager">
     <meta name="author" content="Guilherme Salazar">
 
-    <title>{% block item %}FRM{% endblock %}</title>
+    <title>{% block item %}FeatMan{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha384-2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
@@ -22,15 +22,8 @@
   <body>
 
     <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-      <a class="navbar-brand" href="/">FRM</a>
+      <a class="navbar-brand" href="/">FeatMan</a>
       <ul class="nav navbar-nav">
-         <li class="nav-item btn-group">
-            <a class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Features</a>
-             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                 <a class="dropdown-item" href="/requests/all">Show</a>
-                 <a class="dropdown-item" href="/requests/new">New</a>
-             </div>
-         </li>
          <li class="nav-item btn-group">
             <a class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
@@ -43,6 +36,13 @@
              <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
                  <a class="dropdown-item" href="/">Show</a>
                  <a class="dropdown-item" href="/">New</a>
+             </div>
+         </li>
+         <li class="nav-item btn-group">
+            <a class="dropdown-toggle nav-link" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Features</a>
+             <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                 <a class="dropdown-item" href="/requests/all">Show</a>
+                 <a class="dropdown-item" href="/requests/new">New</a>
              </div>
          </li>
       </ul>
