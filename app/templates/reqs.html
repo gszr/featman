@@ -15,18 +15,19 @@
 			  <th>Product area</th>
 			</tr>
 		  </thead>
-		  <tbody>
-			<tr>
-			  <td>1</td>
-			  <td>A feature</td>
-			  <td>This is a description of a feature</td>
-			  <td>Guilherme Salazar</td>
-			  <td>12/01/2016</td>
-			  <td>1</td>
-			  <td>URL</td>
-			  <td>Web app</td>
-			</tr>
+		  <tbody data-bind="foreach: requests" />
+				<tr>
+				<td data-bind="text: id"></td>
+				<td data-bind="text: title"></td>
+				<td data-bind="text: descr"></td>
+				<td data-bind="text: client"></td>
+				<td data-bind="text: priority">${ $data.priority }</td>
+				<td data-bind="text: deadline"></td>
+				<td data-bind="text: url"></td>
+				<td data-bind="text: prodarea"></td>
+				</tr>
 		  </tbody>
+		<script src="{{ url_for('static', filename='js/reqs.js') }}"></script>
 		</table>
 	  </div>
 {% endblock %}
