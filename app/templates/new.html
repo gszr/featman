@@ -10,19 +10,22 @@
 			class="form-control" placeholder="Title" required autofocus>
 		
 		<label for="inputDescription" class="sr-only">Description</label>
-		<textarea data-bind="value: descr" rows="2" id="inputDescription"
+		<textarea data-bind="value: descr" rows="3" id="inputDescription"
 			class="form-control" placeholder="Description" required></textarea>
 
 		<div class="row">
 			<div class="col-md-8">
-				<label for="inputClient" class="sr-only">Description</label>
-				<input data-bind="value: client" type="text" id="inputClient"
-					class="form-control" placeholder="Client" required>
+				<label for="selectClient" class="sr-only">Description</label>
+				<select data-bind="options: clients, value: client,
+								   optionsCaption: 'Client...'" id="selectClient"
+					class="form-control"required>
+				</select>
 			</div>
 			<div class="col-md-4" style="padding-left: 0px;">
 				<label for="inputPriority" class="sr-only">Priotity</label>
-				<input data-bind="value: priority" type="number" id="inputPriotity"
-					class="form-control" placeholder="Priotity" required>
+				<input data-bind="value: priority" type="number" min="0"
+					id="inputPriotity" class="form-control" placeholder="Priotity"
+					required>
 			</div>
 		</div>
 
@@ -35,13 +38,9 @@
 		<input data-bind="value: url" type="url" id="inputURL" class="form-control"
 			placeholder="Ticket URL" required>
 		
-		<label for="selectArea" class="sr-only">Produt Area</label>
-		<select data-bind="value: prodarea" id="selectArea" class="form-control" required>
-			<option value="" selected disabled>Product area</option>
-			<option value="policies">Policies</option>
-			<option value="billing">Billing</option>
-			<option value="claims">Claims</option>
-			<option value="reports">Reports</option>
+		<label for="selectProduct" class="sr-only">Produt</label>
+		<select id="selectProduct" data-bind="options: prodareas, value: prodarea,
+						   optionsCaption: 'Product...'" class="form-control" required>
 		</select>
 		
 		<button type="submit" class="btn btn-lg btn-primary btn-block">Request</button>
