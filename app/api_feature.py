@@ -12,21 +12,33 @@ def fill_feature(feature, json):
     feature.title    = json['title']
     feature.descr    = json['descr']
     feature.client   = json['client']
-    feature.priority = json['priority']
+    feature.priority = int(json['priority'])
     feature.url      = json['url']
     feature.prodarea = json['prodarea']
     feature.deadline = json['deadline']
 
 @app.route('/api/feature')
 def feature_get():
-    return jsonify(schema.dump(db.query(Feature).all(), many=True).data)
+    return jsonify(schema.dump(db.query(Feature).order_by(Feature.priority).all(),
+        many=True).data)
 
 @app.route('/api/feature', methods=['POST'])
 def feature_post():
-    req = Feature()
-    fill_feature(req, request.json)
-    db_do(db.add, db.commit, req)
-    return jsonify(schema.dump(req).data)
+    feature = Feature()
+    fill_feature(feature, request.json)
+
+    # grab all features that were requested by this client
+    clientFeatures = db.query(Feature).filter_by(client=feature.client)
+    # assign this new feature the lowest possible priority not already taken
+    if feature.priority > clientFeatures.count():
+        feature.priority = clientFeatures.count() + 1
+    # if the requested priority is lower than existing priorities, reorder:
+    else:
+        for feat in clientFeatures.filter(Feature.priority >= feature.priority).all():
+            feat.priority += 1
+
+    db_do(db.add, db.commit, feature)
+    return jsonify(schema.dump(feature).data)
 
 @app.route('/api/feature/<int:id>')
 def feature_id_get(id):
