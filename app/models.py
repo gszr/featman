@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from marshmallow_sqlalchemy import ModelSchema
 
@@ -15,16 +15,27 @@ class Request(Base):
     url      = Column(String(255))
     prodarea = Column(String(100))
 
-    def __init__(self, title, descr, client, priority, url, prodarea,
-        deadline):
-        self.title    = title
-        self.descr    = descr
-        self.client   = client
-        self.priority = priority
-        self.url      = url
-        self.prodarea = prodarea
-        self.deadline = deadline
-
 class RequestSchema(ModelSchema):
     class Meta:
         model = Request
+
+class Client(Base):
+    __tablename__ = "client"
+    id       = Column(Integer, primary_key=True)
+    name     = Column(String(120))
+
+    def __init__(self, name):
+        self.name = name
+
+class ClientSchema(ModelSchema):
+    class Meta:
+        model = Client
+
+class ProductArea(Base):
+    __tablename__ = "prodarea"
+    id   = Column(Integer, primary_key=True)
+    name = Column(String(120))
+
+class ProductAreaSchema(ModelSchema):
+    class Meta:
+        model = ProductArea

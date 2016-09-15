@@ -2,14 +2,11 @@ from flask import request, jsonify
 from models import Request, RequestSchema
 from flask_restful import Resource
 from app import app, db
+from utils import db_do
 
 # marshmallow's schema for Request model class
 schema = RequestSchema()
 db     = db.session
-
-def db_do(dowhat, obj):
-    dowhat(obj)
-    db.commit()
 
 @app.route('/api/request')
 def request_get():
@@ -26,7 +23,7 @@ def request_post():
     req.prodarea = request.json['prodarea']
     req.deadline = request.json['deadline']
     
-    db_do(db.add, req)
+    db_do(db.add, db.commit, req)
     return jsonify(schema.dump(req).data)
 
 @app.route('/api/request/<int:id>')
@@ -37,7 +34,7 @@ def request_id_get(id):
 def request_id_delete(id):
     req = db.query(Request).get(id)
     if req:
-        db_do(db.delete, req)
+        db_do(db.delete, db.commit, req)
     return jsonify({})
 
 @app.route('/api/request/<int:id>', methods=['PUT'])
