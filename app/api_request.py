@@ -8,6 +8,15 @@ from utils import db_do
 schema = RequestSchema()
 db     = db.session
 
+def fill_request(request, json):
+    request.title    = json['title']
+    request.descr    = json['descr']
+    request.client   = json['client']
+    request.priority = json['priority']
+    request.url      = json['url']
+    request.prodarea = json['prodarea']
+    request.deadline = json['deadline']
+
 @app.route('/api/request')
 def request_get():
     return jsonify(schema.dump(db.query(Request).all(), many=True).data)
@@ -15,14 +24,7 @@ def request_get():
 @app.route('/api/request', methods=['POST'])
 def request_post():
     req = Request()
-    req.title    = request.json['title']
-    req.descr    = request.json['descr']
-    req.client   = request.json['client']
-    req.priority = request.json['priority']
-    req.url      = request.json['url']
-    req.prodarea = request.json['prodarea']
-    req.deadline = request.json['deadline']
-    
+    fill_request(req, request.json)
     db_do(db.add, db.commit, req)
     return jsonify(schema.dump(req).data)
 
@@ -42,13 +44,7 @@ def request_id_put(id):
     req = db.query(Request).get(id)
     # TODO should we allow creation with PUT?
     if req:
-        req.title    = request.json['title']
-        req.descr    = request.json['descr']
-        req.client   = request.json['client']
-        req.priority = request.json['priority']
-        req.url      = request.json['url']
-        req.prodarea = request.json['prodarea']
-
-        db_do(db_add, req)
+        fill_request(req, request.json)
+        db_do(db.add, db.commit, req)
     return jsonify({})
 

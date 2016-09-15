@@ -35,8 +35,7 @@ def client_id_put(id):
     # don't allow creating with PUT
     if client:
         client.name = request.json['name']
-        db.add(client)
-        db.commit()
+        db_do(db.add, db.commit, client)
     return jsonify({})
 
 
