@@ -16,8 +16,9 @@ $(document).ready(function() {
 				data : ko.toJSON(this),
 				dataType : "json",
 				success: function(returnedData) {
-				//TODO redir to the request?
+					window.location.href = "/requests/all"
 				}
+				//TODO handle failure as well
 			})
 		}
 	};
