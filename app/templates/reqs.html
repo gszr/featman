@@ -1,22 +1,18 @@
 {% extends "base.html" %}
 {% block body %}
 <link href="{{ url_for('static', filename='css/new.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/features.css') }}" rel="stylesheet">
 	<h2 class="form-signin-heading text-xs-center">Feature Requests</h2>
 	<div class="table-responsive">
 	<table class="table table-bordered table-hover">
-	  <thead class="thead-inverse">
-		<tr>
-		  <th>#</th>
-		  <th>Title</th>
-		  <th>Description</th>
-		  <th>Client</th>
-		  <th>Priority</th>
-		  <th>Target date</th>
-		  <th>Ticket URL</th>
-		  <th>Product area</th>
+	<thead class="thead-inverse">
+		<tr data-bind="foreach: columns">
+			<th><div class="sortable">
+					<span data-bind="html: val"></span><i data-bind="css: state"></i>
+			</div></th>
 		</tr>
-	  </thead>
-	  <tbody data-bind="foreach: requests" />
+	</thead>
+	<tbody data-bind="foreach: features" />
 			<tr>
 			<th data-bind="text: id"></th>
 			<td data-bind="text: title"></td>
@@ -27,7 +23,7 @@
 			<td data-bind="text: url"></td>
 			<td data-bind="text: prodarea"></td>
 			</tr>
-	  </tbody>
+	</tbody>
 	<script src="{{ url_for('static', filename='js/reqs.js') }}"></script>
 	</table>
 	</div>
