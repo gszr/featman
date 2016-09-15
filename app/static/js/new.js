@@ -11,12 +11,12 @@ $(document).ready(function() {
 		this.submitReq = function() {
 			$.ajax({
 				type : "POST",
-				url  : "/api/request",
+				url  : "/api/feature",
 				contentType: "application/json; charset=utf-8",
 				data : ko.toJSON(this),
 				dataType : "json",
 				success: function(returnedData) {
-					window.location.href = "/requests/all"
+					window.location.href = "/feature/all"
 				}
 				//TODO handle failure as well
 			})

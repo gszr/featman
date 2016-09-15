@@ -4,8 +4,8 @@ from marshmallow_sqlalchemy import ModelSchema
 
 Base = declarative_base()
 
-class Request(Base):
-    __tablename__ = "request"
+class Feature(Base):
+    __tablename__ = "feature"
     id       = Column(Integer, primary_key=True)
     priority = Column(Integer)
     deadline = Column(String(10))
@@ -15,9 +15,9 @@ class Request(Base):
     url      = Column(String(255))
     prodarea = Column(String(100))
 
-class RequestSchema(ModelSchema):
+class FeatureSchema(ModelSchema):
     class Meta:
-        model = Request
+        model = Feature
 
 class Client(Base):
     __tablename__ = "client"

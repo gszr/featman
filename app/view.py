@@ -5,11 +5,11 @@ from app import app
 def home():
     return render_template('home.html')
 
-@app.route('/requests/new')
+@app.route('/feature/new')
 def requests_new():
     return render_template('new.html')
 
-@app.route('/requests/all')
+@app.route('/feature/all')
 def requests_all():
     return render_template('reqs.html')
 
