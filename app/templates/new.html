@@ -2,24 +2,29 @@
 {% block body %}
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet">
 <div class="container">
-	<h2 class="form-signin-heading text-xs-center">New feature request</h2>
+	<h2 class="form-signin-heading text-xs-center">New Feature</h2>
 	<form data-bind="submit: submitReq" class="form-signin">
 
-		<label for="inputTitle" class="sr-only">Feature title</label>
+		<label for="inputTitle" class="sr-only">Title</label>
 		<input data-bind="value: title" type="text" id="inputTitle" 
-			class="form-control" placeholder="Feature title" required autofocus>
+			class="form-control" placeholder="Title" required autofocus>
 		
 		<label for="inputDescription" class="sr-only">Description</label>
-		<input data-bind="value: descr" type="text" id="inputDescription"
-			class="form-control" placeholder="Description" required>
+		<textarea data-bind="value: descr" rows="2" id="inputDescription"
+			class="form-control" placeholder="Description" required></textarea>
 
-		<label for="inputClient" class="sr-only">Description</label>
-		<input data-bind="value: client" type="text" id="inputClient"
-			class="form-control" placeholder="Client" required>
-
-		<label for="inputPriority" class="sr-only">Priotity</label>
-		<input data-bind="value: priority" type="text" id="inputPriotity"
-			class="form-control" placeholder="Priotity" required>
+		<div class="row">
+			<div class="col-md-8">
+				<label for="inputClient" class="sr-only">Description</label>
+				<input data-bind="value: client" type="text" id="inputClient"
+					class="form-control" placeholder="Client" required>
+			</div>
+			<div class="col-md-4" style="padding-left: 0px;">
+				<label for="inputPriority" class="sr-only">Priotity</label>
+				<input data-bind="value: priority" type="number" id="inputPriotity"
+					class="form-control" placeholder="Priotity" required>
+			</div>
+		</div>
 
 		<label for="inputDeadline" class="sr-only">Target Date</label>
 		<input data-bind="value: deadline" type="text" id="inputDeadline"
@@ -27,7 +32,7 @@
 			data-provide="datepicker" required>
 
 		<label for="inputURL" class="sr-only">Ticket URL</label>
-		<input data-bind="value: url" type="text" id="inputURL" class="form-control" 
+		<input data-bind="value: url" type="url" id="inputURL" class="form-control"
 			placeholder="Ticket URL" required>
 		
 		<label for="selectArea" class="sr-only">Produt Area</label>
@@ -39,7 +44,7 @@
 			<option value="reports">Reports</option>
 		</select>
 		
-		<button type="submit" class="btn btn-lg btn-primary btn-block">Submit request</button>
+		<button type="submit" class="btn btn-lg btn-primary btn-block">Request</button>
 	<script src="{{ url_for('static', filename='js/new.js') }}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
 	</form>

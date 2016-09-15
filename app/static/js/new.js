@@ -27,6 +27,6 @@ $(document).ready(function() {
 	$('.datepicker').datepicker({
 		maxViewMode: 3,
 		todayBtn: "linked",
-		orientation: "top right"
+		orientation: "bottom right"
 	});
 });
