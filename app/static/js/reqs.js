@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$.getJSON("/api/request/all", function(data) {
+	$.getJSON("/api/request", function(data) {
 		var viewModel = {
 			requests : ko.observableArray(data)
 		};

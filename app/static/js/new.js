@@ -11,7 +11,7 @@ $(document).ready(function() {
 		this.submitReq = function() {
 			$.ajax({
 				type : "POST",
-				url  : "/api/request/new",
+				url  : "/api/request",
 				contentType: "application/json; charset=utf-8",
 				data : ko.toJSON(this),
 				dataType : "json",
