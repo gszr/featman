@@ -31,11 +31,14 @@ class ClientSchema(ModelSchema):
     class Meta:
         model = Client
 
-class ProductArea(Base):
-    __tablename__ = "prodarea"
+class Product(Base):
+    __tablename__ = "product"
     id   = Column(Integer, primary_key=True)
     name = Column(String(120))
 
-class ProductAreaSchema(ModelSchema):
+    def __init__(self, name):
+        self.name = name
+
+class ProductSchema(ModelSchema):
     class Meta:
-        model = ProductArea
+        model = Product
