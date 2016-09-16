@@ -22,7 +22,8 @@ var viewModel = {
 	},
 	filterColumn : function() {
 		var column = viewModel.columns().filter(function(column) {
-			return column["val"].toLowerCase() === $("#selectedColumn").text().toLowerCase();
+			return column["val"].toLowerCase() 
+				=== $("#selectedColumn").text().toLowerCase();
 		});
 		column = column[0].col;
 		console.log(column);
