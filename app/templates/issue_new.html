@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block body %}
+<link href="{{ url_for('static', filename='css/feature_new.css') }}" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" rel="stylesheet">
+<div class="container">
+	<h2 class="form-signin-heading text-xs-center">Report Issue</h2>
+	<form data-bind="submit: submitReq" class="form-signin">
+
+		<label for="inputTitle" class="sr-only">Title</label>
+		<input data-bind="value: title" type="text" id="inputTitle" 
+			class="form-control" placeholder="Title" required autofocus>
+
+		<label for="inputDescr" class="sr-only">Description</label>
+		<textarea data-bind="value: description" rows="4" id="inputDescr" 
+			class="form-control" placeholder="Description" required autofocus>
+		</textarea>
+
+		<label for="selectReporter" class="sr-only">Reporter</label>
+		<select data-bind="options: clients, optionsText: 'name', 
+						   optionsValue: 'name', value: reporter,
+						   optionsCaption: 'Reporter...'"
+			id="selectReporter" class="form-control" required>
+		</select>
+
+		<label for="inputStatus" class="sr-only">Status</label>
+		<select data-bind="options: listStatus, value: status,
+						   optionsCaption: 'Status...'" id="inputStatus" 
+			class="form-control" required>
+		</select>
+
+		<label for="inputDateReported" class="sr-only">Reported on</label>
+		<input data-bind="value: dateReported" type="text" id="inputDateReported"
+			class="input-group date form-control datepicker" placeholder="Reported on"
+			data-provide="datepicker" required>
+		
+		<label for="inputDateResolved" class="sr-only">Resolved on</label>
+		<input data-bind="value: dateResolved" type="text" id="inputDateResolved"
+			class="input-group date form-control datepicker" placeholder="Resolved on"
+			data-provide="datepicker">
+
+		<button type="submit" class="btn btn-lg btn-primary btn-block">Report</button>
+	<script src="{{ url_for('static', filename='js/issue_new.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+	</form>
+</div>
+{% endblock %}

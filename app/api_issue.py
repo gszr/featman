@@ -14,7 +14,7 @@ def fill_issue(issue, json):
     issue.reporter     = json['reporter']
     issue.status       = json['status']
     issue.dateReported = json['dateReported']
-    issue.dateResolved = json['dateResolved']
+    issue.dateResolved = json['dateResolved'] or ""
 
 @app.route('/api/issue')
 def issue_all_get():

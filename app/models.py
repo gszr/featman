@@ -48,7 +48,7 @@ class Issue(Base):
     id           = Column(Integer, primary_key=True)
     title        = Column(String(255))
     description  = Column(String(255))
-    reporter     = Column(Integer)
+    reporter     = Column(String(100))
     status       = Column(String(30))
     dateReported = Column(String(10))
     dateResolved = Column(String(10))

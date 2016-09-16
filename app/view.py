@@ -28,3 +28,11 @@ def product_new():
 @app.route('/product/all')
 def product_all():
     return render_template('product_all.html')
+
+@app.route('/issue/new')
+def issue_new():
+    return render_template('issue_new.html')
+
+@app.route('/issue/all')
+def issue_all():
+    return render_template('issue_all.html')
