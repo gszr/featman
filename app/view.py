@@ -7,9 +7,9 @@ def home():
 
 @app.route('/feature/new')
 def requests_new():
-    return render_template('new.html')
+    return render_template('feature_new.html')
 
 @app.route('/feature/all')
 def requests_all():
-    return render_template('reqs.html')
+    return render_template('feature_all.html')
 

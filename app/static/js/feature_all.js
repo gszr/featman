@@ -93,5 +93,6 @@ $(document).ready(function() {
 
 $(document.body).on("click", ".selectColumn", function(e) {
 	$("#selectedColumn").text($(this).text());
+	$(this).parent().close();
 	return false;
 })

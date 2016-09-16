@@ -1,10 +1,9 @@
-body {
-  background-color: #eee;
-}
-table{
+table {
   background-color: #fff;
   border-radius: 6px;
 }
+.rowRequest,
+.selectColumn,
 table.table div.sortable {
   cursor: pointer;
   -webkit-user-select: none;
@@ -19,5 +18,8 @@ table.table div.sortable i {
 }
 .features-table-heading {
   padding-bottom: 30px;
-
+}
+.filterBar {
+  padding-left: 30px; 
+  padding-bottom: 5px;
 }
