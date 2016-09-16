@@ -1,87 +1,109 @@
-# Engineering Project
-This is a project that we use for testing potential team members on their technical skills.
+# Projects Management App 
 
-## Feature Request App
-Build a web application that allows the user to create "feature requests".
+This is my solution to the project specified at [requirements.txt](requirements.txt).
 
-A "feature request" is a request for a new feature that will be added onto an existing piece of
-software. Assume that the user is an employee at IWS who would be entering this information after
-having some correspondence with the client that is requesting the feature.  The necessary fields
-are:
+## Features
 
-* **Title:** A short, descriptive name of the feature request.
-* **Description:** A long description of the feature request.
-* **Client:** A selection list of clients (use "Client A", "Client B", "Client C")
-* **Client Priority:** A numbered priority according to the client (1...n). Client Priority numbers
-should not repeat for the given client, so if a priority is set on a new feature as "1", then all
-other feature requests for that client should be reordered.
-* **Target Date:** The date that the client is hoping to have the feature.
-* **Ticket URL:** A field for storing any URL
-* **Product Area:** A selection list of product areas (use 'Policies', 'Billing', 'Claims',
-'Reports')
+As specified, the app handles "feature requests", allowing one to add and view
+features requested by users. Each request has the following fields:
 
-## Tech Stack Suggestions
-The following are recommendations on tech stack. You can build a project outside of this framework,
-but this stack demonstrates mastery of  tools our team favors.
+* Title
+* Description
+* Client (selected among clients recorded in the app)
+* Client priority: numbered prioriry (1..n). New requests are inserted with the
+highest possible priority; e.g., if there are no requests, a new one will have
+priority "1". If there is a request with the given priority, requests for that
+client will be reordered
+* Target Date
+* Ticket URL
+* Product (selected among the list of projects in the app)
 
-* OS: Ubunutu
-* Server Side Scripting: Python 2.7+ or 3.5+
-* Server Framework: Flask
-* ORM: Sql-Alchemy
-* MVVM: Knockout.js
-* CSS: Bootstrap 4 or similar
+Similar interfaces were provided for "Products", "Clients", and "Issues".
+"Clients" and "Products" only have an ID and a Name. "Issues" have the following
+fields:
 
-Make sure that your instructions for accessing or otherwise running your code are extremely clear.
+* Title
+* Description
+* Reporter (which is selected among clients recorded in the system)
+* Status (open, fixed, deployed, ...)
+* Reported on: date the issue was reported
+* Resolved on: optional field to show the date it was resolved
 
-## Guidelines
+All of these entities can be displayed in their own page, in a table which
+allows for sorting and filtering by any column.
 
-Build your own public repo on github, and call it whatever you like. Build your solution in your
-repo, and include a README.md file that contains the detailed instructions for running your web app.
-Email the URL for your github repo to phil@britecore.com once you begin the project so we can review 
-your progress. Prior to submission, please bring up a live hosted example. AWS has a free tier if you 
-aren't certain where to host.
+## Tech stack
 
-One of the major goals in this project is to see how you fill in ambiguities in your own creative
-way. There is no such thing as a perfect project here, just interpretations of the instructions
-above, so be creative in your approach. While we want to see an expression of your style and problem
-solving, we also want to keep you moving, so please feel free to email phil@britecore.com with questions
-if you get stuck or have questions.
+The tools I used -- most of which were recommended:
 
-We want to be respectful of your time and set realistic expectations for submission. To help guide you, we 
-have included the list below which details common in the best projects we receive. It is rare for 
-a project to match every item in this list, but the candidates we hire typically showcase several of 
-these features in their work.
+* Ubuntu for the deployed instance (on AWS free tier); FreeBSD on my dev
+machine
+* Backend:
+  - Python 2.7
+    - Flask
+    - SQLAlchemy
+    - Marshmallow and its integration with SQLAlchemy
+    - pysqlite
+  - SQLite
+* Frontend:
+  - Bootstrap v4 alpha
+  - bootstrap-datepicker
+  - jQuery
+  - Knockout.js
 
---
+## App structure
 
-TECHNOLOGY
+Structure of the implementation
 
-1. *Open Source*. We have a strong affinity for open source technology. If your go-to technology stack includes
-proprietary software, you won't be helping yourself to use it in this project.
+### API
 
-2. *Decoupled Backend*. We are looking for candidates with a strong understanding of the entire web application stack. Move beyond a stock template or the admin page from a CMS. Show off your understanding of how frameworks are put together and create at least a couple of methods that flex your intellectual muscle. The best projects will completely decouple the backend and the front end and communciate via API.
+The API handlers are implemented in api\_(client, feature, issue, product).py
+files and [app/api.py](app/api.py) file which simply imports all of them and
+gets improted in [run.py](run.py).
 
-3. *Test Suites with Continuous Integration*. Enterprise production requires rock solid stability. All code submitted into BriteCore repos must contain unit and regressions tests, so we favor candidates with experience writing quality tests. The best projects include a test suite hooked into a Continuous Integration platform like Jenkins or Travis CI.
+The structure of the RESTful API is as follows, where "entity" refers to any
+of client, feature, issue, product entities:
 
-4. *Automated Deployment*. Speaking of deployment, the most valuable engineers understand how their code is deployed and utilize provisioners such as Salt Stack, Puppet, or Chef. The best projects integrated CI with a fully automated deployment to AWS, Digital Ocean, or similar.
+GET    /api/entity:    gets the JSON representation of all entities of that class
+POST   /api/entity:    adds a new entity
+GET    /api/entity/id: gets the JSON representation of entity whose ID is id
+PUT    /api/entity/id: updates entity whose ID is id
+DELETE /api/entity/id: deletes entity whose ID is id
 
-5. *Usable, Responsive Interface*. There are many accessible CSS frameworks out there such as Bootstrap. All modern web applications should be responsive and these frameworks make it very easy to create a modern interface that adheres to established design principles and formats well on all devices.
+### Views
 
-6. *MVVM Frontend*. The modern web is highly interactive. Projects like Knockout.js and Angular make it very easy to deploy HTML bindings that interact with interface elements dependably and efficiently.
+[app/view.py](app/view.py) contains the handlers that render HTML templates.
 
---
+The pages follow a similar pattern to the APIs:
 
-PROJECT FEATURES
+/entity/new: page to create a new entity
+/entity/all: page to view all entities of that class
 
-1. *User Management*. A system that holds client feature requests benefits greatly from user management. Some projects include admin controlled user accounts. Better projects included self enrollment via email. The best projects used a SSO solution like OAuth or SAML.
+## Running
 
-2. *Client / Project Management*. As a base requirement, you had a fixed list of clients and projects, but the best projects included a simple admin interface associated with the admin login that gives users a basic CRUD interface for these entities.
+* Requirements
+  - Python 2.7
+  - pip Python modules manager
+  - virtualenv
 
-3. *Filter by Client*. If multiple clients are submitting feature requests, it is important to be able to view the total task list as well as a list filtered by client.
+* Steps to run
 
-4. *Sorting*. This one is very important if you've ever worked on a real project and managed client priorities. Decent projects deploy unique sort rank per client. Better projects include sorting per client AND whole all client sorting. The best projects do all of this utilizing a drag and drop component bound to the MVVM framework.
+  $ virtualenv env  
+  $ pip install -r pip\_deps  
+  $ source env/bin/activate  
+  (env) $ python run.py
 
-5. *Discussion Threads*. A few projects go far enough to include discussion threads within each feature request and one has even included push notifications utilizing SMS.
+## TODO
 
-Thank you for your time. We are excited to review your project!
+* Frontend to PUT & DELETE methods for each of the entities; the API is
+already there
+* Automated deployment
+* Tests (not really helping myself here, but I didn't write a single line of
+(automated) test yet; the API I tested with curl)
+
+
+## References
+
+To implement the sorting feature I studied and based my code on 
+[this](https://github.com/pstricker/koTableSort/).
 
