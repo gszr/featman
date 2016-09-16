@@ -1,12 +1,35 @@
 {% extends "base.html" %}
 {% block body %}
-<link href="{{ url_for('static', filename='css/new.css') }}" rel="stylesheet">
 <link href="{{ url_for('static', filename='css/features.css') }}" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-	<h2 class="form-signin-heading text-xs-center">Feature Requests</h2>
+	<h2 class="features-table-heading text-xs-center">Feature Requests</h2>
+	<div class="row">
+		<div class="col-lg-6 pull-xs-right"
+			style="padding-left: 30px; padding-bottom:10px;">
+			<div class="input-group">
+				<div class="input-group-btn">
+					<button type="button" class="btn btn-secondary dropdown-toggle"
+						id="selectedColumn" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
+						Column
+					</button>
+					<div class="dropdown-menu" data-bind="foreach: columns">
+						<a class="selectColumn dropdown-item" href="" data-bind="html: val">
+						</a>
+					</div>
+				</div>
+				<input type="text" class="form-control" placeholder="Filter..."
+					data-bind="value: filterTerm">
+				<span class="input-group-btn">
+					<button class="btn btn-secondary" type="button"
+						data-bind="click: filterColumn">Go!</button>
+				</span>
+			</div>
+		</div>
+	</div>
 	<div class="table-responsive">
 	<table class="table table-bordered table-hover">
-	<thead class="thead-inverse">
+	<thead>
 		<tr data-bind="foreach: columns">
 			<th><div class="sortable" data-bind="click: $root.sortClick.bind(col)">
 					<span data-bind="html: val"></span><i data-bind="css: state"></i>

@@ -19,8 +19,22 @@ var viewModel = {
 			case "date":
 				dateSort(col);
 		}
-	}
+	},
+	filterColumn : function() {
+		filterColumn($("#selectedColumn").text().toLowerCase())
+	},
+	filterTerm : ko.observable("")
 };
+
+function filterColumn(column) {
+	if (viewModel.allFeatures)
+		viewModel.features(viewModel.allFeatures);
+	var filtered = viewModel.features().filter(function(feature) {
+		return feature[column].toLowerCase().includes(viewModel.filterTerm());
+	});
+	viewModel.allFeatures = viewModel.features();
+	viewModel.features(filtered);
+}
 
 var sortArrowUp = "fa fa-arrow-up";
 var sortArrowDw = "fa fa-arrow-down";
@@ -70,3 +84,8 @@ $(document).ready(function() {
 		viewModel.features(data);
 	});
 });
+
+$(document.body).on("click", ".selectColumn", function(e) {
+	$("#selectedColumn").text($(this).text());
+	return false;
+})
