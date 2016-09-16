@@ -21,7 +21,9 @@ var viewModel = {
 		}
 	},
 	filterColumn : function() {
-		filterColumn($("#selectedColumn").text().toLowerCase())
+		var column = $("#selectedColumn").text().toLowerCase();
+		if (column === "#") column = "id";
+		filterColumn(column);
 	},
 	filterTerm : ko.observable("")
 };
@@ -30,7 +32,7 @@ function filterColumn(column) {
 	if (viewModel.allFeatures)
 		viewModel.features(viewModel.allFeatures);
 	var filtered = viewModel.features().filter(function(feature) {
-		return feature[column].toLowerCase().includes(viewModel.filterTerm());
+		return feature[column].toString().toLowerCase().includes(viewModel.filterTerm());
 	});
 	viewModel.allFeatures = viewModel.features();
 	viewModel.features(filtered);
