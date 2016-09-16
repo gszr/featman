@@ -2,17 +2,12 @@ var viewModel = {
 	title     : ko.observable(),
 	descr     : ko.observable(),
 	client    : ko.observable(),
-	clients   : ko.observableArray([
-		{id: 1, name: "ClientA"},
-		{id: 2, name: "ClientB"},
-		{id: 3, name: "ClientC"}]),
+	clients   : ko.observableArray([]),
 	priority  : ko.observable(),
 	deadline  : ko.observable(),
 	url       : ko.observable(),
 	prodarea  : ko.observable(),
-	prodareas : ko.observableArray(["Policies", "Billing", "Claims",
-		"Reports"])
-
+	prodareas : ko.observableArray([])
 };
 
 viewModel.submitReq = function() {
@@ -34,6 +29,10 @@ ko.applyBindings(viewModel);
 $(document).ready(function() {
 	$.getJSON("/api/client", function(data) {
 		viewModel.clients(data);
+	});
+
+	$.getJSON("/api/product", function(data) {
+		viewModel.prodareas(data);
 	});
 
 	$('.datepicker').datepicker({

@@ -41,8 +41,10 @@
 			placeholder="Ticket URL" required>
 		
 		<label for="selectProduct" class="sr-only">Produt</label>
-		<select id="selectProduct" data-bind="options: prodareas, value: prodarea,
-						   optionsCaption: 'Product...'" class="form-control" required>
+		<select id="selectProduct" data-bind="options: prodareas, optionsText: 'name',
+											  optionsValue: 'name', value: prodarea,
+						   					  optionsCaption: 'Product...'"
+				class="form-control" required>
 		</select>
 		
 		<button type="submit" class="btn btn-lg btn-primary btn-block">Request</button>
