@@ -16,10 +16,11 @@
 
 		<div class="row">
 			<div class="col-md-8">
-				<label for="selectClient" class="sr-only">Description</label>
-				<select data-bind="options: clients, value: client,
-								   optionsCaption: 'Client...'" id="selectClient"
-					class="form-control"required>
+				<label for="selectClient" class="sr-only">Client</label>
+				<select data-bind="options: clients, optionsText: 'name',
+								   optionsValue: 'name', value: client,
+								   optionsCaption: 'Client...'"
+					id="selectClient" class="form-control"required>
 				</select>
 			</div>
 			<div class="col-md-4" style="padding-left: 0px;">
