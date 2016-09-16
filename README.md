@@ -1,6 +1,6 @@
 # Projects Management App 
 
-This is my solution to the project specified at [requirements.txt](requirements.txt).
+This is my solution to the project specified at [specification.md](specification.md).
 
 ## Features
 
