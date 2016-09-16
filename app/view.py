@@ -20,3 +20,11 @@ def client_new():
 @app.route('/client/all')
 def client_all():
     return render_template('client_all.html')
+
+@app.route('/product/new')
+def product_new():
+    return render_template('product_new.html')
+
+@app.route('/product/all')
+def product_all():
+    return render_template('product_all.html')
