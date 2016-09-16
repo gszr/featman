@@ -13,3 +13,10 @@ def requests_new():
 def requests_all():
     return render_template('feature_all.html')
 
+@app.route('/client/new')
+def client_new():
+    return render_template('client_new.html')
+
+@app.route('/client/all')
+def client_all():
+    return render_template('client_all.html')
