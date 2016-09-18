@@ -64,11 +64,11 @@ gets improted in [run.py](run.py).
 The structure of the RESTful API is as follows, where "entity" refers to any
 of client, feature, issue, product entities:
 
-GET    /api/entity:    gets the JSON representation of all entities of that class
-POST   /api/entity:    adds a new entity
-GET    /api/entity/id: gets the JSON representation of entity whose ID is id
-PUT    /api/entity/id: updates entity whose ID is id
-DELETE /api/entity/id: deletes entity whose ID is id
+GET    /api/entity:    gets the JSON representation of all entities of that class  
+POST   /api/entity:    adds a new entity  
+GET    /api/entity/id: gets the JSON representation of entity whose ID is id  
+PUT    /api/entity/id: updates entity whose ID is id  
+DELETE /api/entity/id: deletes entity whose ID is id  
 
 ### Views
 
@@ -76,8 +76,8 @@ DELETE /api/entity/id: deletes entity whose ID is id
 
 The pages follow a similar pattern to the APIs:
 
-/entity/new: page to create a new entity
-/entity/all: page to view all entities of that class
+/entity/new: page to create a new entity  
+/entity/all: page to view all entities of that class  
 
 ## Running
 
