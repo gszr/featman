@@ -1,10 +1,8 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from marshmallow_sqlalchemy import ModelSchema
+from app import db
 
-Base = declarative_base()
-
-class Feature(Base):
+class Feature(db.Model):
     __tablename__ = "feature"
     id       = Column(Integer, primary_key=True)
     priority = Column(Integer)
@@ -19,7 +17,7 @@ class FeatureSchema(ModelSchema):
     class Meta:
         model = Feature
 
-class Client(Base):
+class Client(db.Model):
     __tablename__ = "client"
     id       = Column(Integer, primary_key=True)
     name     = Column(String(120))
@@ -31,7 +29,7 @@ class ClientSchema(ModelSchema):
     class Meta:
         model = Client
 
-class Product(Base):
+class Product(db.Model):
     __tablename__ = "product"
     id   = Column(Integer, primary_key=True)
     name = Column(String(120))
@@ -43,7 +41,7 @@ class ProductSchema(ModelSchema):
     class Meta:
         model = Product
 
-class Issue(Base):
+class Issue(db.Model):
     __tablename__ = "issue"
     id           = Column(Integer, primary_key=True)
     title        = Column(String(255))

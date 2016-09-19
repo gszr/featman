@@ -1,9 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from models import Base
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///featreq.db'
 db  = SQLAlchemy(app)
 
-Base.metadata.drop_all(bind=db.engine)
-Base.metadata.create_all(bind=db.engine)
+import models
+db.create_all()
