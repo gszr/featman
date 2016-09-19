@@ -64,10 +64,10 @@ function stringSort(col) {
 	}));
 }
 
-ko.applyBindings(viewModel);
 
 
 $(document).ready(function() {
+	ko.applyBindings(viewModel);
 	$.getJSON("/api/product", function(data) {
 		viewModel.products(data);
 	});

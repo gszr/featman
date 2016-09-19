@@ -81,10 +81,9 @@ function dateSort(col) {
 	}));
 }
 
-ko.applyBindings(viewModel);
-
 
 $(document).ready(function() {
+	ko.applyBindings(viewModel);
 	$.getJSON("/api/issue", function(data) {
 		viewModel.issues(data);
 	});

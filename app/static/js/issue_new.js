@@ -25,6 +25,7 @@ viewModel.submitReq = function() {
 }
 
 $(document).ready(function() {
+	ko.applyBindings(viewModel);
 	$.getJSON("/api/client", function(data) {
 		viewModel.clients(data);
 	});
@@ -37,4 +38,3 @@ $(document).ready(function() {
 	});
 });
 
-ko.applyBindings(viewModel);
