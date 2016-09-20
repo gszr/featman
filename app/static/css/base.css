@@ -10,3 +10,17 @@ body {
   padding: 3rem 1.5rem;
   text-align: center;
 }
+.navbar {
+  text-align: center;
+}
+.navbar-brand {
+  position: absolute;
+  left: 15px;
+}
+.nav-center {
+  display: inline-flex;
+  left: 0;
+  right: 0;
+  margin:0;
+  float:none;
+}
