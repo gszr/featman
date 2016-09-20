@@ -3,6 +3,9 @@ body {
   padding-bottom: 40px;
   background-color: #eee;
 }
+.container {
+  max-width: 70%;
+}
 .starter-template {
   padding: 3rem 1.5rem;
   text-align: center;
